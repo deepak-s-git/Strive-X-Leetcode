@@ -1,32 +1,27 @@
 // Problem: Reverse Integer (LeetCode 7)
 // Given a 32-bit signed integer x, return its digits reversed.
-// If the reversed integer overflows (goes beyond [-2^31, 2^31 - 1]), return 0.
+// If the reversed integer overflows (outside [-2^31, 2^31 - 1]), return 0.
 //
 // Approach:
-// 1. Extract digits one by one using modulo (%) and division (/).
-// 2. Before updating the reversed number, check for overflow/underflow.
-//    - If revNum > INT_MAX/10 OR revNum < INT_MIN/10, return 0.
-// 3. Update revNum = revNum * 10 + last_digit.
+// 1. Use a `long` to safely hold the reversed number while building it.
+// 2. Extract digits using modulo (%) and build the reversed number.
+// 3. After the loop, check if the result fits into the 32-bit signed integer range.
+//    - If not, return 0.
+// 4. Otherwise, return the reversed integer.
 //
-// Time Complexity: O(log10(x))  (number of digits in x)
+// Time Complexity: O(log10(x))  (since we process each digit once)
 // Space Complexity: O(1)
 
 class Solution {
-public:
-    int reverse(int x) {
-        int revNum = 0;
+ public:
+  int reverse(int x) {
+    long ans = 0;
 
-        while (x != 0) {
-            int dig = x % 10;
-
-            // Check for overflow before multiplying by 10
-            if (revNum > INT_MAX / 10 || revNum < INT_MIN / 10) {
-                return 0;
-            }
-
-            revNum = revNum * 10 + dig;
-            x = x / 10;
-        }
-        return revNum;
+    while (x != 0) {
+      ans = ans * 10 + x % 10;
+      x /= 10;
     }
+
+    return (ans < INT_MIN || ans > INT_MAX) ? 0 : ans;
+  }
 };
