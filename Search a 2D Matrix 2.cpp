@@ -1,6 +1,4 @@
 // Problem: Search a 2D Matrix II
-// Link: https://leetcode.com/problems/search-a-2d-matrix-ii/
-//
 // You are given an m x n matrix where each row and column are sorted in ascending order.
 // Given an integer target, return true if target is in the matrix, otherwise false.
 //
