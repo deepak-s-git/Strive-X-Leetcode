@@ -1,6 +1,4 @@
 // Problem: Search a 2D Matrix
-// Link: https://leetcode.com/problems/search-a-2d-matrix/
-//
 // You are given an m x n matrix where each row is sorted in ascending order,
 // and the first integer of each row is greater than the last integer of the previous row.
 // Given an integer target, return true if target is in the matrix, otherwise false.
